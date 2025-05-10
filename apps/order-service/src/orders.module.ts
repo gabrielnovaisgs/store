@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { OrderServiceController } from './orders.controller';
 import { OrderServiceService } from './orders.service';
-import { OrderQueueModule } from '@app/order-queue';
+import { OrderQueueModule } from './queue/order-queue.module';
 
 @Module({
   imports: [OrderQueueModule],

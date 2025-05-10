@@ -1,6 +1,6 @@
 import { Controller, Post } from '@nestjs/common';
 import { OrderServiceService } from './orders.service';
-import { OrderQueueService } from '@app/order-queue';
+import { OrderQueueService } from './queue/order-queue.service';
 
 @Controller('/orders')
 export class OrderServiceController {

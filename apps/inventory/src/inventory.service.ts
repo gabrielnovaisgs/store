@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
+import { StockStatus } from './stock-status';
 
 @Injectable()
 export class InventoryService {
-  getHello(): string {
-    return 'Hello World!';
+  checkStock(): StockStatus {
+    return StockStatus.StockConfirmed;
   }
 }
