@@ -1,12 +1,23 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { StockStatus } from '../stock-status';
+import { QUEUES } from '@app/common';
 
 @Injectable()
 export class StockQueueService {
-  constructor(@Inject('STOCK_QUEUE') private readonly client: ClientProxy) {}
+  constructor(
+    @Inject('STOCK_CONFIRMED')
+    private readonly clientStockConfirmed: ClientProxy,
+    @Inject('STOCK_REJECTED')
+    private readonly clientStockRejected: ClientProxy,
+  ) {}
 
-  publish(props: { stockStatus: StockStatus }) {
-    this.client.emit(props.stockStatus, 'Produto');
+  publish({ stockStatus }: { stockStatus: StockStatus }) {
+    if (stockStatus == StockStatus.StockConfirmed) {
+      this.clientStockConfirmed.emit(QUEUES.STOCK_CONFIRMED, 'Produto');
+    }
+    if (stockStatus == StockStatus.StockRejected) {
+      this.clientStockRejected.emit(QUEUES.STOCK_REJECTED, 'Produto');
+    }
   }
 }
