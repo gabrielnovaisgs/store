@@ -10,6 +10,24 @@
   "monorepo": true,
   "root": "apps/order-service",
   "projects": {
+    "inventory": {
+      "type": "application",
+      "root": "apps/inventory",
+      "entryFile": "main",
+      "sourceRoot": "apps/inventory/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/inventory/tsconfig.app.json"
+      }
+    },
+    "order-queue": {
+      "type": "library",
+      "root": "libs/order-queue",
+      "entryFile": "index",
+      "sourceRoot": "libs/order-queue/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/order-queue/tsconfig.lib.json"
+      }
+    },
     "order-service": {
       "type": "application",
       "root": "apps/order-service",
