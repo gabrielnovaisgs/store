@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"   # AMQP protocol port
+      - "15672:15672" # Management UI port
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - app-network
+
+  order-db:
+    image: postgres:15
+    container_name: order-db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=order
+    volumes:
+      - order-db:/var/lib/postgresql/data
+    networks:
+      - app-network
+  inventory-db:
+    image: postgres:15
+    container_name: inventory-db
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=inventory
+    volumes:
+      - inventory-db:/var/lib/postgresql/data
+    networks:
+      - app-network
+  
+  notification-db:
+    image: postgres:15
+    container_name: notification-db
+    ports:
+      - "5434:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=notification
+    volumes:
+      - notification-db:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+volumes:
+  rabbitmq_data:
+  inventory-db:
+  notification-db:
+  order-db:
+
+networks:
+  app-network:
+    driver: bridge 
