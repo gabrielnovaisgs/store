@@ -4,10 +4,13 @@ import { Product } from '@prisma/client';
 import { CreateProductDto } from './dtos/create-product.dto';
 import { SkuIdDto } from './dtos/sku-id.dto';
 import { UpdateProductDto } from './dtos/update-product.dto';
-
+import { ProductQueueService } from './queue/product-queue.service';
 @Injectable()
 export class ProductService {
-  constructor(private prisma: DatabaseService) {}
+  constructor(
+    private readonly prisma: DatabaseService,
+    private readonly productQueueService: ProductQueueService,
+  ) {}
 
   async getProducts(): Promise<Product[]> {
     const products = await this.prisma.product.findMany();
@@ -23,6 +26,7 @@ export class ProductService {
         skuCode: product.skuCode,
       },
     });
+    this.productQueueService.publishProductCreated(createdProduct);
     return createdProduct;
   }
 
