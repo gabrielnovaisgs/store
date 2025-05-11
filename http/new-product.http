@@ -2,7 +2,7 @@ POST http://localhost:3001/products
 Content-Type: application/json
 
 {
-    "skuCode": "123457",
+    "skuCode": "1234asda57",
     "name": "Product 1",
     "description": "Product 1 description",
     "price": 100

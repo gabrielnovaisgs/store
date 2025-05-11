@@ -85,6 +85,7 @@
     ],
     "moduleNameMapper": {
       "^@app/common(|/.*)$": "<rootDir>/libs/common/src/$1",
+      "^@app/core(|/.*)$": "<rootDir>/libs/core/src/$1",
       "^@app/order-queue(|/.*)$": "<rootDir>/libs/order-queue/src/$1"
     }
   }

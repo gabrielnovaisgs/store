@@ -10,22 +10,7 @@ import { DatabaseModule } from './database/database.module';
     ConfigModule.forRoot({
       envFilePath: './apps/inventory/.env',
     }),
-    ClientsModule.register([
-      {
-        name: 'ORDER_CREATED',
-        transport: Transport.RMQ,
-        options: {
-          queue: QUEUES.ORDER_CREATED,
-        },
-      },
-      {
-        name: 'PRODUCT_CREATED',
-        transport: Transport.RMQ,
-        options: {
-          queue: QUEUES.PRODUCT_CREATED,
-        },
-      },
-    ]),
+
     InventoryModule,
     DatabaseModule,
   ],

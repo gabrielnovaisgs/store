@@ -24,6 +24,12 @@
       "@app/common/*": [
         "libs/common/src/*"
       ],
+      "@app/core": [
+        "libs/core/src"
+      ],
+      "@app/core/*": [
+        "libs/core/src/*"
+      ],
       "@app/order-queue": [
         "libs/order-queue/src"
       ],
