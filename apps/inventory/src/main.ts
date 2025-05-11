@@ -1,17 +1,10 @@
 import { NestFactory } from '@nestjs/core';
-import { InventoryModule } from './inventory.module';
-import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import { AppModule } from './app.module';
+import { MicroserviceOptions } from '@nestjs/microservices';
 
 async function bootstrap() {
-  const app = await NestFactory.createMicroservice<MicroserviceOptions>(
-    InventoryModule,
-    {
-      transport: Transport.RMQ,
-      options: {
-        queue: 'orders.created',
-      },
-    },
-  );
+  const app =
+    await NestFactory.createMicroservice<MicroserviceOptions>(AppModule);
   await app.listen();
 }
 bootstrap();

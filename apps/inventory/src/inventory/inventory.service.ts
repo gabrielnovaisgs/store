@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { StockStatus } from './stock-status';
+import { StockStatus } from '../stock-status';
 
 @Injectable()
 export class InventoryService {

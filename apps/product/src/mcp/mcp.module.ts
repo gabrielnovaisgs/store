@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { McpModule as McpNestModule, McpTransportType } from '@rekog/mcp-nest';
 import { McpService } from './mcp.service';
-import { ProductModule } from '../product.module';
+import { ProductModule } from '../product/product.module';
 
 @Module({
   imports: [

@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ProductService } from '../product.service';
+import { ProductService } from '../product/product.service';
 import { Tool } from '@rekog/mcp-nest';
 import {
   CreateProductDto,

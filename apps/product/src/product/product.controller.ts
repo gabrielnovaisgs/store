@@ -5,12 +5,12 @@ import { ZodValidationPipe } from '@app/common/zod-validation-pipe';
 import {
   CreateProductDto,
   createProductDtoSchema,
-} from './dtos/create-product.dto';
+} from '../dtos/create-product.dto';
 import {
   UpdateProductDto,
   updateProductDtoSchema,
-} from './dtos/update-product.dto';
-import { SkuIdDto, skuIdDtoSchema } from './dtos/sku-id.dto';
+} from '../dtos/update-product.dto';
+import { SkuIdDto, skuIdDtoSchema } from '../dtos/sku-id.dto';
 
 @Controller(`/products`)
 export class ProductController {

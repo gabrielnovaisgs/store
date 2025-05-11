@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { DatabaseService } from './database/databse.service';
+import { DatabaseService } from '../database/databse.service';
 import { Product } from '@prisma/client';
-import { CreateProductDto } from './dtos/create-product.dto';
-import { SkuIdDto } from './dtos/sku-id.dto';
-import { UpdateProductDto } from './dtos/update-product.dto';
-import { ProductQueueService } from './queue/product-queue.service';
+import { CreateProductDto } from '../dtos/create-product.dto';
+import { SkuIdDto } from '../dtos/sku-id.dto';
+import { UpdateProductDto } from '../dtos/update-product.dto';
+import { ProductQueueService } from '../queue/product-queue.service';
 @Injectable()
 export class ProductService {
   constructor(
