@@ -1,12 +1,4 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Param,
-  Post,
-  Put,
-  UsePipes,
-} from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { Product } from '@prisma/client';
 import { ZodValidationPipe } from '@app/common/zod-validation-pipe';
@@ -32,8 +24,10 @@ export class ProductController {
   }
 
   @Post()
-  @UsePipes(new ZodValidationPipe(createProductDtoSchema))
-  createProduct(@Body() createProductDto: CreateProductDto) {
+  createProduct(
+    @Body(new ZodValidationPipe(createProductDtoSchema))
+    createProductDto: CreateProductDto,
+  ) {
     return this.productService.createProduct(createProductDto);
   }
 
